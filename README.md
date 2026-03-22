@@ -23,8 +23,8 @@ Requires JVM 11+.
 ## Quick start
 
 ```kotlin
-// sdkKey: copy from your environment in the flagr dashboard
-val flagr = FlagrClient(sdkKey = "sdk_live_...")
+// FLAGR_ENV_KEY: SDK key copied from your environment in the flagr dashboard
+val flagr = FlagrClient(sdkKey = System.getenv("FLAGR_ENV_KEY"))
 
 // Evaluate synchronously from the local cache
 val enabled = flagr.isEnabled("dark-mode", tenantId = "user-123")
@@ -58,7 +58,7 @@ subscription.unsubscribe()
 ### OpenFeature provider
 
 ```kotlin
-val provider = FlagrProvider(sdkKey = "sdk_live_...")
+val provider = FlagrProvider(sdkKey = System.getenv("FLAGR_ENV_KEY"))
 OpenFeatureAPI.getInstance().setProvider(provider)
 
 val client = OpenFeatureAPI.getInstance().getClient()
@@ -87,6 +87,6 @@ val enabled = client.getBooleanValue("dark-mode", false, ctx)
 
 ## Publishing a new version
 
-Tag the commit `sdk-jvm/vX.Y.Z`. GitHub Actions runs `./gradlew publishAndReleaseToMavenCentral` and publishes to Maven Central via the Sonatype Central Portal.
+Tag the commit `vX.Y.Z`. GitHub Actions runs `./gradlew publishAndReleaseToMavenCentral` and publishes to Maven Central via the Sonatype Central Portal.
 
 Required repository secrets: `MAVEN_CENTRAL_USERNAME`, `MAVEN_CENTRAL_PASSWORD`, `SIGNING_KEY`, `SIGNING_KEY_PASSWORD`.
