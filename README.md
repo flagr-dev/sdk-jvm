@@ -6,7 +6,7 @@ Kotlin/Java SDK for [flagr.dev](https://flagr.dev) — evaluate feature flags lo
 
 **Gradle (Kotlin DSL)**
 ```kotlin
-implementation("dev.flagr:flagr-sdk:0.1.0")
+implementation("dev.flagr:flagr-sdk:0.2.0")
 ```
 
 **Maven**
@@ -14,7 +14,7 @@ implementation("dev.flagr:flagr-sdk:0.1.0")
 <dependency>
   <groupId>dev.flagr</groupId>
   <artifactId>flagr-sdk</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.0</version>
 </dependency>
 ```
 
@@ -40,13 +40,19 @@ The client connects once via SSE, seeds a local in-memory cache, and evaluates e
 
 ```kotlin
 // Returns the default (false) if the flag is unknown or the cache is not yet seeded
+// tenantId is optional ("" by default) — omit for flags that don't use partial rollout.
+// For partially_enabled flags, an empty tenantId always returns false.
 val enabled: Boolean = flagr.isEnabled("checkout-v2", tenantId = "org-456", default = false)
+
+// Without tenantId (for always-on/always-off flags):
+val simpleEnabled: Boolean = flagr.isEnabled("dark-mode")
 ```
 
 ### `onChange`
 
 ```kotlin
 // Fires immediately with the current value, then on every flag update
+// tenantId is optional ("" by default)
 val subscription = flagr.onChange("checkout-v2", tenantId = "org-456") { isEnabled ->
     println("checkout-v2 is now: $isEnabled")
 }
