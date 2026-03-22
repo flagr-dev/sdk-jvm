@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dev.flagr.sdk.FlagrClientTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-03-19T04:53:06" hostname="MacBookPro.attlocal.net" time="8.003">
+  <properties/>
+  <testcase name="partial rollout - tenant in list is enabled, others disabled()" classname="dev.flagr.sdk.FlagrClientTest" time="0.546"/>
+  <testcase name="onChange fires immediately with current value()" classname="dev.flagr.sdk.FlagrClientTest" time="0.308"/>
+  <testcase name="isEnabled resolves correctly after init event()" classname="dev.flagr.sdk.FlagrClientTest" time="0.309"/>
+  <testcase name="isEnabled returns false for unknown flag before cache is seeded()" classname="dev.flagr.sdk.FlagrClientTest" time="0.004"/>
+  <testcase name="reconnects after server disconnect()" classname="dev.flagr.sdk.FlagrClientTest" time="6.008"/>
+  <testcase name="onChange fires on flag_update event()" classname="dev.flagr.sdk.FlagrClientTest" time="0.511"/>
+  <testcase name="stops retrying on 401()" classname="dev.flagr.sdk.FlagrClientTest" time="0.314"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

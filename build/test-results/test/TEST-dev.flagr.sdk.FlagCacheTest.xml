@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dev.flagr.sdk.FlagCacheTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-03-19T04:53:06" hostname="MacBookPro.attlocal.net" time="0.025">
+  <properties/>
+  <testcase name="unknown flag returns default()" classname="dev.flagr.sdk.FlagCacheTest" time="0.017"/>
+  <testcase name="applyUpdate replaces value()" classname="dev.flagr.sdk.FlagCacheTest" time="0.003"/>
+  <testcase name="applyUpdate with same value returns false()" classname="dev.flagr.sdk.FlagCacheTest" time="0.001"/>
+  <testcase name="disabled flag returns false for any tenant()" classname="dev.flagr.sdk.FlagCacheTest" time="0.0"/>
+  <testcase name="partial rollout returns true only for listed tenant()" classname="dev.flagr.sdk.FlagCacheTest" time="0.0"/>
+  <testcase name="enabled flag returns true for any tenant()" classname="dev.flagr.sdk.FlagCacheTest" time="0.0"/>
+  <testcase name="snapshot returns current state()" classname="dev.flagr.sdk.FlagCacheTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

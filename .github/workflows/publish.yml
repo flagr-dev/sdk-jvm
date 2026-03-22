@@ -1,0 +1,33 @@
+name: Publish to Maven Central
+
+on:
+  push:
+    tags:
+      - "sdk-jvm/v*"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+
+      - name: Extract version from tag
+        run: echo "SDK_VERSION=${GITHUB_REF_NAME#sdk-jvm/v}" >> $GITHUB_ENV
+
+      - name: Publish
+        working-directory: sdk-jvm
+        env:
+          SDK_VERSION: ${{ env.SDK_VERSION }}
+          ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNING_KEY }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_KEY_PASSWORD }}
+        run: ./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
