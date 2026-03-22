@@ -3,7 +3,7 @@ name: Publish to Maven Central
 on:
   push:
     tags:
-      - "sdk-jvm/v*"
+      - "v*"
 
 jobs:
   publish:
@@ -20,10 +20,9 @@ jobs:
           distribution: "temurin"
 
       - name: Extract version from tag
-        run: echo "SDK_VERSION=${GITHUB_REF_NAME#sdk-jvm/v}" >> $GITHUB_ENV
+        run: echo "SDK_VERSION=${GITHUB_REF_NAME#v}" >> $GITHUB_ENV
 
       - name: Publish
-        working-directory: sdk-jvm
         env:
           SDK_VERSION: ${{ env.SDK_VERSION }}
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
