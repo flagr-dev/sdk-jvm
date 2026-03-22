@@ -55,7 +55,7 @@ class FlagrClient(
      * Evaluates a flag synchronously from the local cache.
      * Returns [default] if the flag is unknown (cache not yet populated).
      */
-    fun isEnabled(flagKey: String, tenantId: String, default: Boolean = false): Boolean =
+    fun isEnabled(flagKey: String, tenantId: String = "", default: Boolean = false): Boolean =
         cache.resolve(flagKey, tenantId, default)
 
     /**
@@ -65,7 +65,7 @@ class FlagrClient(
      */
     fun onChange(
         flagKey: String,
-        tenantId: String,
+        tenantId: String = "",
         default: Boolean = false,
         callback: (Boolean) -> Unit,
     ): Subscription {
